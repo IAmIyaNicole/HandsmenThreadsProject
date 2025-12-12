@@ -1,0 +1,94 @@
+📝 HandsMen Threads: Topic-Based Demonstration Script
+This script provides a step-by-step guide for presenting each functional area of the HandsMen Threads Salesforce application.
+
+1. Custom Object Creation and Relationships
+Objective: Showcase the core data model, including Customer, Product, and the main transactional objects.
+
+1.1 Handsman Customer Setup
+Action: Navigate to the Handsman Customer object and click New.
+
+Demonstration: "We start by creating a new customer profile. I'll enter Iya Nicole with the email ixnxnicole5@gmail.com."
+
+Key Point: "This object tracks customer information and will later hold their automated Loyalty Status (Bronze, Silver, Gold)."
+
+1.2 Product Definition
+Action: Navigate to the Product object and click New.
+
+Demonstration: "We are adding a new product: Jeans. We assign a unique SKU example 0333 and set the unit Price at $3."
+
+Key Point: "The Price field here is crucial, as the system will use it to calculate the total order amount automatically."
+
+1.3 Inventory Management
+Action: Navigate to the Inventory object and click New.
+
+Demonstration: "We create an inventory record for Jeans, confirming an initial Stock Quantity of 200 units and listing the Warehouse."
+
+Key Point: "This is the source record for our stock level. Updates to this field will trigger our Low Stock Alert Flow."
+
+2. Handsman Order and Apex Trigger
+Objective: Demonstrate the creation of a transactional record and the automatic calculation of the total amount using Apex code.
+
+2.1 Order Creation and Initial Status
+Action: Navigate to the Handsman Order object and click New.
+
+Demonstration: "I will create an order for Stephen M, selecting the Jeans product with a Quantity of 20. I'll set the initial Status to Pending."
+
+2.2 Automatic Total Calculation (Apex Trigger)
+Key Point: "Notice that as soon as the order is saved, the Total Amount field automatically populated with $60 (20 units x $3)."
+
+Code Explanation: "This calculation is managed by an Apex Trigger running on the Order object. This is an essential use of custom code for complex or real-time business logic."
+
+3. Automation: Salesforce Flows
+Objective: Showcase the three different types of automation (Record-Triggered and Scheduled) used in the application.
+
+Shutterstock
+
+3.1 Flow 1: Order Confirmation (Record-Triggered)
+Purpose: Notify the customer when their order is confirmed.
+
+Action: Edit the existing Handsman Order record and change the Status from Pending to Confirmed.
+
+Demonstration: "I've changed the status to Confirmed. The flow is now triggered."
+
+System Result: "We can check the mailbox and confirm the customer has received an automated email: 'Your order has been confirmed.'"
+
+3.2 Flow 2: Low Stock Alert (Record-Triggered)
+Purpose: Alert the Inventory Manager when stock is critically low.
+
+Action: Navigate to the Inventory record for Jeans and Edit the Stock Quantity.
+
+Demonstration: "Let's simulate a large sale by dropping the Stock Quantity from 180 down to 4."
+
+Trigger Condition: "This flow is configured to fire when the stock level drops below 5."
+
+System Result: "The Inventory Manager immediately receives an email alert: 'The following product, Jeans, is running low.'"
+
+///// 
+
+3.3 Flow 3: Loyalty Status Check (Scheduled)
+Purpose: Run batch processing to update customer loyalty titles for marketing segmentation.
+
+Action: Explain the flow's configuration rather than triggering it live.
+
+Demonstration: "This is a Scheduled Flow that runs every day at 12:00 AM." 
+
+/////
+
+Logic: "It checks the customer's total lifetime purchases and assigns a title:"
+
+Gold: Total purchases $ > $1,000$
+
+Silver: Total purchases $ $500 < $1,000$
+
+Bronze: Total purchases $ \leq $500$
+
+System Result: "The customer's profile is updated, and they receive a congratulatory email confirming their new Loyalty Status."
+
+4. Reporting and Dashboards
+Objective: Briefly show how the data is visualized for business insights.
+
+Action: Navigate to the Dashboards tab.
+
+Demonstration: "All the data we've entered instantly feeds into our reporting structure. Here, we can visualize Low Stock Levels, Total Sales by Product, and a summary of our Customer Loyalty Statuses."
+
+Final Point: "This completes the full cycle of the HandsMen Threads application, from data entry to process automation and business intelligence."
